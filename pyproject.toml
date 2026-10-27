@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragpilot-backend"
+version = "0.1.0"
+description = "FastAPI orchestrator for RagPilot RAG (Supabase pgvector + Gemini embeddings, Groq/Gemini LLM)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "supabase>=2.6",
+    "pydantic-settings>=2.4",
+    "python-multipart>=0.0.9",
+    "httpx>=0.27",
+    "google-genai>=1.0",
+    "groq>=0.13",
+    "pypdf>=4.2",
+    "python-dotenv>=1.0",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
